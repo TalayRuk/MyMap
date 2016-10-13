@@ -1,1 +1,1 @@
-var MyMap = require('./../js/myMap.js').myMapModule;
+// var MyMap = require('./../js/myMap.js').myMapModule;

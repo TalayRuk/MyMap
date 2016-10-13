@@ -7,19 +7,14 @@
     <script src="build/js/vendor.min.js"></script>
     <script type="text/javascript" src="build/js/app.js"></script>
     <title>My Map</title>
-    <style>
-       #map {
-        height: 400px;
-        width: 100%;
-       }
-    </style>
   </head>
   <body>
     <h3>My Google Maps Demo</h3>
     <div id="map"></div>
     <script>
+
       function initMap() {
-        var uluru = {lat: -25.363, lng: 131.044};
+        var uluru = {lat: 9.060652, lng: 97.813768};
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 4,
           center: uluru
@@ -29,9 +24,13 @@
           map: map
         });
       }
+
     </script>
     <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8u72lMtNHWd5E1VLnxkSq1HXdEavoy64&callback=initMap">
     </script>
   </body>
 </html>
+
+<!-- The callback parameter executes the initMap function after the API is completely loaded.  -->
+<!-- The async attribute allows the browser to continue rendering the rest of your page while the API loads.  -->
