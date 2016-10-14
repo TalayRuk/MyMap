@@ -1,7 +1,9 @@
 $green: #ceffff;
 
+.jumbotron {
+  background-color: $green;
+}
 #map {
    width: 100%;
-   height: 800px;
-   background-color: $green;
+   height: 600px;
  }

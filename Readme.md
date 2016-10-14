@@ -1,29 +1,3 @@
-<!-- <!DOCTYPE html>
-<html>
-  <head>
-    <link rel="stylesheet" href="build/css/vendor.css">
-    <link rel="stylesheet" href="build/css/styles.css">
-    <script src="build/js/vendor.min.js"></script>
-    <script type="text/javascript" src="build/js/app.js"></script>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-    <title>My map </title>
-  </head>
-  <body>
-    <div class="jumbotron">
-      <form >
-        <label for="city">Enter your city, state or country here</label>
-        <input type="text" class="myCity">
-        <button type="button" class="button btn-success btn-lg"></button>
-      </form>
-
-    </div>
-    <div id="map">
-
-    </div>
-
-  </body>
-</html> -->
 
 <!DOCTYPE html>
 <html>
@@ -85,7 +59,43 @@
       }
     </script>
     <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8u72lMtNHWd5E1VLnxkSq1HXdEavoy64&callback=initMap">
+    src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
     </script>
   </body>
 </html>
+
+$("#btn").click(function(){
+            var geocoder =  new google.maps.Geocoder();
+    geocoder.geocode( { 'address': 'miami, us'}, function(results, status) {
+          if (status == google.maps.GeocoderStatus.OK) {
+            alert("location : " + results[0].geometry.location.lat() + " " +results[0].geometry.location.lng());
+          } else {
+            alert("Something got wrong " + status);
+          }
+        });
+});
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<html>
+<head>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+</head>
+<body>
+    <input id="btn" type="button" value="search for miami coordinates" />
+</body>
+</html>
+
+
+var apiKey = require('./../.env').apiKey;
+
+Weather = function(){
+}
+
+Weather.prototype.getWeather = function(city, displayFunction) {
+  $.get('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + apiKey).then(function(response) {
+    displayFunction(city, response.main.humidity);
+  }).fail(function(error) {
+    $('.showWeather').text(error.responseJSON.message);
+  });
+}
+
+exports.weatherModule = Weather;
